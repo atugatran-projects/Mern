@@ -32,15 +32,15 @@ app.get("/contact", (req, res) => {
 
 // Post ENDPOINTS
 app.post("/contact", (req, res) => {
-  var myData = new Contact(req.body);
-  myData
-    .save()
-    .then(() => {
-      res.send("This item has been saved to the database");
-    })
-    .catch(() => {
-      res.status(400).send("Item was not saved to the database");
-    });
+  // var myData = new Contact(req.body);
+  // myData
+  //   .save()
+  //   .then(() => {
+  //     res.send("This item has been saved to the database");
+  //   })
+  //   .catch(() => {
+  //     res.status(400).send("Item was not saved to the database");
+  //   });
 });
 
 // START THE SERVER
