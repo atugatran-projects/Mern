@@ -1,9 +1,11 @@
 const express = require("express");
 const path = require("path");
 const app = express();
-const bodyparser = require("body-parser");
-const db = require("./Database/db_conn");
-const port = 3000;
+const port = 5000;
+
+// Database Connection
+require("./Database/db_conn");
+const Contact = require('./model/Contact');
 
 // Set static folder
 app.use("/static", express.static("static")); // For serving static files
@@ -32,15 +34,15 @@ app.get("/contact", (req, res) => {
 
 // Post ENDPOINTS
 app.post("/contact", (req, res) => {
-  // var myData = new Contact(req.body);
-  // myData
-  //   .save()
-  //   .then(() => {
-  //     res.send("This item has been saved to the database");
-  //   })
-  //   .catch(() => {
-  //     res.status(400).send("Item was not saved to the database");
-  //   });
+  var myData = new Contact(req.body);
+  myData
+    .save()
+    .then(() => {
+      res.send("This item has been saved to the database");
+    })
+    .catch(() => {
+      res.status(400).send("Item was not saved to the database");
+    });
 });
 
 // START THE SERVER

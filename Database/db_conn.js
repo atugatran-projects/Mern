@@ -1,17 +1,12 @@
 const mongoose = require("mongoose");
 
 // Mongo conn
-mongoose.connect("mongodb://localhost/contactDance", { useNewUrlParser: true });
-
-// Define mongoose schema
-var contactSchema = new mongoose.Schema({
-  name: String,
-  phone: String,
-  email: String,
-  address: String,
-  desc: String,
-});
-
-const db = mongoose.model("Contact", contactSchema);
-
-module.exports = db;
+mongoose
+  .connect("mongodb://127.0.0.1:27017/Mern", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log(`connnection successful`);
+  })
+  .catch((err) => console.log(`no connection ` + err));
