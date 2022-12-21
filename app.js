@@ -1,7 +1,9 @@
 const express = require("express");
 const path = require("path");
 const app = express();
-const port = 5000;
+
+
+const PORT = process.env.PORT || 3000;
 
 // Database Connection
 require("./Database/db_conn");
@@ -9,7 +11,7 @@ const Contact = require('./model/Contact');
 
 // Set static folder
 app.use("/static", express.static("static")); // For serving static files
-app.use(express.urlencoded());
+// app.use(express.urlencoded());
 
 // Set views folder
 app.set("view engine", "hbs"); // Set the template engine as hbs
@@ -46,8 +48,8 @@ app.post("/contact", (req, res) => {
 });
 
 // START THE SERVER
-app.listen(port, () => {
+app.listen(PORT, () => {
   console.log(
-    `The application started successfully on port http://localhost:${port}`
+    `The application started successfully on port http://localhost:${PORT}`
   );
 });

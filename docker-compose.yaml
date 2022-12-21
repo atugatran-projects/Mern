@@ -1,0 +1,21 @@
+version: '3.9'
+services:
+  # MongoDB Servid
+  mongo:
+    container_name: mongo_db
+    image: mongo:latest
+    restart: always
+    volumes:
+      - ./Database/db:/data/db
+
+  # Node
+  node:
+    build: .
+    ports:
+      - 3000:3000
+    depends_on:
+      - mongo
+    external_links:
+      - mongo
+    volumes:
+      - .:/usr/src/app
