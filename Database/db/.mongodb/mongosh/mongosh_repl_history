@@ -1,6 +1,4 @@
-cls
 db.contacts.find()
-show collections
+cls
 use Mern
-show dbs
 cls
