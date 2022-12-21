@@ -18,4 +18,4 @@ services:
     external_links:
       - mongo
     volumes:
-      - .:/usr/src/app
+      - ./:/usr/src/app
