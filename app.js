@@ -1,17 +1,18 @@
 const express = require("express");
 const path = require("path");
 const app = express();
-
+const mongoose = require("mongoose");
 
 const PORT = process.env.PORT || 3000;
 
 // Database Connection
 require("./Database/db_conn");
 const Contact = require('./model/Contact');
+mongoose.set('strictQuery', true);
 
 // Set static folder
 app.use("/static", express.static("static")); // For serving static files
-// app.use(express.urlencoded());
+app.use(express.urlencoded());
 
 // Set views folder
 app.set("view engine", "hbs"); // Set the template engine as hbs
