@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
-mongoose.set('strictQuery', true)
-const url2 = "mongodb://mongo:27017/Mern"
-
+mongoose.set("strictQuery", true);
+const url2 = "mongodb://mongo:27017/Mern";
+//
 // Mongo conn
 mongoose
   .connect(url2, {
