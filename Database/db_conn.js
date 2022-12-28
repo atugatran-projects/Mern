@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", true);
-const url2 = "mongodb://mongo:27017/Mern";
-//
+
+const url2 = process.env.DATABASE;
+
 // Mongo conn
 mongoose
   .connect(url2, {
