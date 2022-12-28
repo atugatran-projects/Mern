@@ -20,7 +20,7 @@ app.set("views", path.join(__dirname, "views")); // Set the views directory
 
 // Set partials folder
 var hbs = require("hbs");
-hbs.registerPartials(__dirname + "/views/partials", function (err) {});
+hbs.registerPartials(__dirname + "/views/partials", function (err) { });
 
 // Get ENDPOINTS
 app.get("/", (req, res) => {
@@ -34,6 +34,8 @@ app.get("/about", (req, res) => {
 app.get("/contact", (req, res) => {
   res.status(200).render("contact");
 });
+
+
 
 // Post ENDPOINTS
 app.post("/contact", (req, res) => {
