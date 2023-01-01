@@ -1,0 +1,4 @@
+db.contacts.find()
+show collections
+use Mehbn
+show dbs
