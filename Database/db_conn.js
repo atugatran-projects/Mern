@@ -1,14 +1,15 @@
 const mongoose = require("mongoose");
 mongoose.set('strictQuery', true)
-const url = "mongodb://127.0.0.1:27017/Mern"
+// const url = "mongodb+srv://atul:9C5Xc4Q06BKIqvZP@cluster0.otpfyog.mongodb.net/Mehbn?retryWrites=true&w=majority"
+const DB = process.env.DATABASE;
+mongoose.set("strictQuery", true);
 
 // Mongo conn
 mongoose
-  .connect(url, {
+  .connect(DB, {
     useNewUrlParser: true,
-    useUnifiedTopology: true,
   })
   .then(() => {
     console.log(`connnection successful`);
   })
-  .catch((err) => console.log(`no connection ` + err));
+  .catch((err) => console.log(`no connection ${err}`));
