@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", true);
 
-const url2 = process.env.DATABASE;
+const url = process.env.DATABASE;
 
 // Mongo conn
 mongoose
-  .connect(url2, {
+  .connect(url, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })

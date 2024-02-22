@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 5000;
 // Database Connection
 require("./Database/db_conn");
 const Contact = require('./model/Contact');
-mongoose.set('strictQuery', true);
+mongoose.set('strictQuery', false);
 
 // Set static folder
 app.use("/static", express.static("static")); // For serving static files
@@ -21,6 +21,7 @@ app.set("views", path.join(__dirname, "views")); // Set the views directory
 
 // Set partials folder
 var hbs = require("hbs");
+const { log } = require("console");
 hbs.registerPartials(__dirname + "/views/partials", function (err) { });
 
 // Get ENDPOINTS
@@ -41,12 +42,13 @@ app.get("/contact", (req, res) => {
 // Post ENDPOINTS
 app.post("/contact", (req, res) => {
   var myData = new Contact(req.body);
+  console.log(myData);
   myData
     .save()
     .then(() => {
       res.send("This item has been saved to the database");
     })
-    .catch(() => {
+    .catch((err) => {
       res.status(400).send("Item was not saved to the database");
     });
 });
