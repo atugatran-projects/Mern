@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require("express");
 const path = require("path");
 const app = express();
+const mongoose = require("mongoose");
 
 const PORT = process.env.PORT || 3000;
 
@@ -22,6 +23,16 @@ var hbs = require("hbs");
 hbs.registerPartials(__dirname + "/views/partials", function (err) {});
 
 // Get ENDPOINTS
+app.get('/db-status', async (req, res) => {
+  const db = mongoose.connection;
+  console.log(db.readyState);
+  if (db.readyState === 1) {
+    res.status(200).send('Database is connected');
+  } else {
+    res.status(500).send('Database is not connected');
+  }
+});
+
 app.get("/", (req, res) => {
   res.status(200).render("index");
 });
